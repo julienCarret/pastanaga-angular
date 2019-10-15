@@ -30,9 +30,6 @@ export * from './lib/textfield/textfield.module';
 export * from './lib/textfield/input.component';
 export * from './lib/textfield/select.component';
 
-export * from './lib/richtext/richtext.module';
-export * from './lib/richtext/richtext.component';
-
 export * from './lib/toast/toast.module';
 export * from './lib/toast/toast.component';
 export * from './lib/toast/toast.model';
