@@ -66,10 +66,6 @@ export class IconComponent {
                 this.service.loadSvg(this.iconPath).subscribe(svg => {
                     this.setSvg(svg);
                 });
-            } else {
-                this.svgLoader.loadSvgFromSsr(this.iconPath, this.renderer).subscribe(svg => {
-                    this.setSvg(svg);
-                });
             }
         }
     }
