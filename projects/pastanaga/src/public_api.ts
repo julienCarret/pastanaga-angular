@@ -25,6 +25,8 @@ export * from  './lib/progress/progress.component';
 
 export * from './lib/svg/svg.module';
 export * from './lib/svg/icon.component';
+export * from './lib/svg/svg-loader';
+export * from './lib/svg/svg-loader.interface';
 
 export * from './lib/textfield/textfield.module';
 export * from './lib/textfield/input.component';
