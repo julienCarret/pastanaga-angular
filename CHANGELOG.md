@@ -1,41 +1,65 @@
-# 1.9.2 (2020-02-11) [mathilde-pellerin]
+# 1.10.0 (2020-02-14)
 
 ### Bug fixes
-- **Toggle component:** Vertically align toggle element when there is an image 
+- **Input component**: Do not break if input value is a number [mathilde-pellerin]
+
+### Features
+- New `password-input` component [mathilde-pellerin]
+- New `input-icon` component [mathilde-pellerin]
+
+### Improvements
+- **Input and textarea component**: Add focus event triggered by input and textarea [mathilde-pellerin]
+- **Input component**: Allow to disable autocomplete with `noAutoComplete` option [mathilde-pellerin]
+- Update demo app to have a clearer view of inputs different states [mathilde-pellerin]
+
+# 1.9.4 (2020-02-14)
+
+### Improvements
+- Use utility functions for change detection
+
+# 1.9.3 (2020-02-11)
+
+### Bug fixes
+- **Textarea component:** Fix textarea readonly padding [barcafa]
+
+# 1.9.2 (2020-02-11)
+
+### Bug fixes
+- **Toggle component:** Vertically align toggle element when there is an image [mathilde-pellerin] 
 
 ### Improvements
 - Improve changelog structure by adding **Bug fixes**, **Features**/**Improvements** and **Breaking changes** sections (starting at version 1.9.0)
 
-# 1.9.1 (2020-02-07) [mathilde-pellerin]
+# 1.9.1 (2020-02-07)
 
 ### Bug fixes
-- **Checkbox tree component:** 
+- **Checkbox tree component:** [mathilde-pellerin] 
   - fix lazy loading
   - style when last checkbox has children expanded
   - better typing
 
-# 1.9.0 (2020-02-05) [mathilde-pellerin]
+# 1.9.0 (2020-02-05)
 
 ### Bug fixes
 
-- **Checkbox tree component:**
+- **Checkbox tree component:** [mathilde-pellerin]
   - Fix selection state to work properly with onPush strategy
   - Fix bugs on indeterminate state
   - Fix ellipsis
 
 ### Features
 
-- **Checkbox tree component:**
+- **Checkbox tree component:** [mathilde-pellerin]
   - Add mode: categorized (by default), nested, fileSystem
   - Add `subLabels` and `labelIcons` optional inputs
   - Add unit tests
-- **Checkbox component:**
+- **Checkbox component:** [mathilde-pellerin]
   - add coerce boolean for all inputs
   - add `squareCheck` optional input (replace the check mark '✓' by a square '■' when selected)
 
 ### BREAKING CHANGES
 
-- **Checkbox component:**
+- **Checkbox component:** [mathilde-pellerin]
   - `onSelection` event emitter become `selection`
   - rename boolean inputs removing `is` prefix for better consistency between components:
     - `isDisabled` -> `disabled`
