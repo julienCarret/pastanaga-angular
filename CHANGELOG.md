@@ -1,3 +1,21 @@
+# 1.10.2 (2020-02-19)
+
+### Bug fixes
+- **Button-link component**: Fix button link rendering when displayed as button [ebrehault]
+
+### Improvements
+- **Icon component**: Allow to create a large icon via the icon property [ebrehault]
+
+# 1.10.1 (2020-02-18)
+
+### Improvements
+- **Button component**: Support coerceBoolean on all button properties [mathilde-pellerin]
+- **Icon component**: Support icon as object with icon path and background [mathilde-pellerin]
+- **Icon component**: Better management of classes and styles [mathilde-pellerin]
+- **Checkbox component**: Add optional icon block to checkbox [mathilde-pellerin]
+- **Dropdown item component**: dropdown items in checkbox mode now support subLabel displayed as checkbox help [mathilde-pellerin]
+- **Dropdown item component**: support icon for checkbox mode [mathilde-pellerin]
+
 # 1.10.0 (2020-02-14)
 
 ### Bug fixes

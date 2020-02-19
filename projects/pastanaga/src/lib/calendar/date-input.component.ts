@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, Output, Renderer2 } from '@angular/core';
-import { PopupComponent } from '../popup/popup.component';
-import { PopupService } from '../popup/popup.service';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { markForCheck } from '../common/utils';
+import { TextfieldCommon } from '../textfield/textfield.common';
+import { format, isValid, isToday, isYesterday, getMonth } from 'date-fns';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
     selector: 'pa-date-input',
@@ -9,54 +10,51 @@ import { markForCheck } from '../common/utils';
     styleUrls: ['../popup/_popup.scss', './date-input.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DateInputComponent extends PopupComponent {
-
-    dateInput = '';
-    dateError = false;
-    isValidDate = false;
-    currentDate: Date = new Date();
-    focused = false;
-
+export class DateInputComponent extends TextfieldCommon {
+    
     @Input() dateHelp: string = '';
     @Input() datePlaceholder: string = 'mm/dd/yyyy';
+    @Input() errorMessage: string = 'Invalid date (mm/dd/yyyy)';
+    @Input() inputId: string = '';
+    @Input() minDate?: Date;
+    @Input() selection?: Date;
+
+    @Input() set noFuture(value) { this._noFuture = coerceBooleanProperty(value); }
+    _noFuture = false;
 
     @Output() select: EventEmitter<Date | null> = new EventEmitter<Date>();
 
+    @ViewChild('datePickerPopup', { static: false }) datePicker;
+
+    dateInput = '';
+    isValidDate = true;
+    currentDate: Date = new Date();
+    focused = false;
+
     constructor(
-        public popupService: PopupService,
-        public renderer: Renderer2,
-        public element: ElementRef,
         public cdr: ChangeDetectorRef,
     ) {
-        super(popupService, renderer, element, cdr);
+        super();
+    }
+
+    ngOnInit() {
+        super.ngOnInit();
+        if (!!this.selection) {
+            this.selectDate(this.selection);
+        }
     }
 
     selectDate(date: Date) {
         this.currentDate = date;
-        this.dateInput = '';
-        const dd = date.getDate();
-        const mm = date.getMonth() + 1;
-        const yyyy = date.getFullYear();
-        const today = new Date();
-        const yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
-        if (today.getFullYear() === date.getFullYear()){
-            if (today.getMonth() === date.getMonth() && today.getDate() === date.getDate()){
-                this.dateInput = 'Today';
-            } else if (yesterday.getMonth() === date.getMonth() && yesterday.getDate() === date.getDate()){
-                this.dateInput = 'Yesterday';
-            }
-        }
-        if (this.dateInput === '') {
-            this.dateInput = mm + '/' + dd + '/' + yyyy; // American date format
-        }
+        this.isValidDate = true;
+        this.dateInput = isToday(date) ? 'Today' : isYesterday(date) ? 'Yesterday' : format(date, 'MM/dd/yyyy');
         markForCheck(this.cdr);
         this.select.emit(this.currentDate);
     }
 
     checkTypedDate(date: string) {
         if (date !== ''){
-            this.dateError = false;
+            const typedDate = new Date(date);
             this.isValidDate = true;
             if (date.toLowerCase() === 'today') {
                 this.currentDate = new Date();
@@ -65,15 +63,16 @@ export class DateInputComponent extends PopupComponent {
                 yesterday.setDate(yesterday.getDate() - 1);
                 this.currentDate = yesterday;
             } else {
-                const typedDate = new Date(date);
-                this.isValidDate = date.length >= 8 && typedDate.toString() !== 'Invalid Date';
+                this.isValidDate = date.length >= 8 && isValid(typedDate);
                 if (this.isValidDate) {
                     const brokenDate = date.split('/');
                     if (brokenDate[0] === '2' || brokenDate[0] === '02') {
-                        this.isValidDate = this.checkFebruaryDate(brokenDate);
+                        this.isValidDate = getMonth(typedDate) === 1; // If the date is 29 of february of non leap year or 30-31, month will be 2
                     }
                 }
-                this.dateError = !this.isValidDate;
+                if (this.isValidDate) {
+                    this.currentDate = typedDate;
+                }
             }
             if (this.isValidDate) {
                 this.select.emit(this.currentDate);
@@ -81,22 +80,13 @@ export class DateInputComponent extends PopupComponent {
         }
     }
 
-    private checkFebruaryDate(brokenDate: string[]) {
-        if (Number(brokenDate[1]) <= 28) {
-            return true;
-        } else if (Number(brokenDate[1]) >= 30) {
-            return false;
-        } else {
-            const year = Number(brokenDate[2]);
-            return (year % 4 === 0) && ((year % 100 !== 0) || (year % 100 === 0 && year % 400 === 0));
-        }
+    onFocus(focused: boolean) {
+        this.focused = focused;
     }
 
-    onFocus() {
-        this.focused = true;
-    }
-
-    onBlur() {
-        this.focused = false;
+    iconClick($event: MouseEvent) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        this.datePicker.remoteClick({ignoreRemote: true});
     }
 }

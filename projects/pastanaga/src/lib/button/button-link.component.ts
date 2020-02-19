@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewEncapsulation, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ButtonBase } from './button-base';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
     selector: 'pa-button-link',
@@ -8,21 +9,16 @@ import { ButtonBase } from './button-base';
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None // to allow button style to access icon svg
 })
-export class ButtonLinkComponent extends ButtonBase implements OnChanges {
+export class ButtonLinkComponent extends ButtonBase {
     @Input() route?: string;
     @Input() traverseTo?: string;
-    @Input() hasButtonDisplay = false;
+    @Input() set hasButtonDisplay(value) {
+        this._hasButtonDisplay = coerceBooleanProperty(value);
+    }
     @Output() onClick: EventEmitter<MouseEvent> = new EventEmitter();
+    _hasButtonDisplay = false;
 
     constructor(protected changeDetector: ChangeDetectorRef) {
         super(changeDetector);
-    }
-
-    ngOnChanges(changes) {
-        this.onChanges(changes);
-
-        if (changes.hasButtonDisplay) {
-            this.buttonStyle['pa-button-link'] = changes.hasButtonDisplay.currentValue;
-        }
     }
 }
