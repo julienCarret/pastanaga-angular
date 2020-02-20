@@ -1,3 +1,8 @@
+# 1.10.3 (2020-02-20)
+
+### Features
+- New `date-input` component [raul-onna]
+
 # 1.10.2 (2020-02-19)
 
 ### Bug fixes
