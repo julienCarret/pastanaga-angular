@@ -1,4 +1,89 @@
-# 1.10.3 (2020-02-20)
+# 1.13.2 (2020-03-10)
+
+### Improvements
+- Update travis configuration to automatically update the demo page every time we merge on master branch. [mathilde-pellerin]
+- Display version number in demo page [mathilde-pellerin]
+- Create git tag only if not existing [mathilde-pellerin]
+
+# 1.13.1 (2020-03-09)
+
+### Improvements
+- **Checkbox tree**: add `disabled` option to disable the whole tree [mathilde-pellerin]
+- **Checkbox group**: add `disabled` option to disabled the whole group [mathilde-pellerin]
+- **Checkbox group**: Add `noSelectAll` option to remove select all button [mathilde-pellerin]
+
+# 1.13.0 (2020-03-09)
+
+### Features
+- New `checkbox-group` component [mathilde-pellerin]
+
+### Breaking changes
+- **Checkbox tree** doesn't have a `type` input anymore: use `checkbox-group` with type radio instead
+
+# 1.12.7 (2020-03-06)
+
+### Bug fixes
+- Make sure placeholder is displayed in select when no value [ebrehault]
+- Fix focus for Chrome [ebrehault]
+- Fix checked icon in password rules [ebrehault]
+
+# 1.12.6 (2020-03-05)
+
+### Bug fixes
+- **Checkbox tree**: prevent toggling children while they're loading [mathilde-pellerin]
+- **Checkbox tree**: update expand button icon when loading children [mathilde-pellerin]
+- **Checkbox tree**: children tree should inherit shouldSort option [mathilde-pellerin]
+
+# 1.12.5 (2020-03-04)
+
+### Bug fix
+- Fix Angular Universal related problems [ebrehault]
+
+# 1.12.4 (2020-03-03)
+
+### Improvements
+- **Icon model**: Add `IconData` interface to type expected data for Icon constructor [mathilde-pellerin]
+
+# 1.12.3 (2020-02-28)
+
+### Bug fix
+- **calendar**: set sunday as first day of the week [mathilde-pellerin]
+
+# 1.12.2 (2020-02-27)
+
+### Improvements
+
+- **styles**: move common styles into globally imported style to avoid massive CSS duplication in resulting bundles [ebrehault]
+
+# 1.12.1 (2020-02-26)
+
+### Bug fixes
+
+- **date-input**: fix calendar positioning [mathilde-pellerin]
+- **date-input**: give more time to enter a valid date and reset error state when new value [mathilde-pellerin]
+
+### Improvements
+
+- **Toast**: utility method to get a default toast close button [mathilde-pellerin]
+
+# 1.12.0 (2020-02-24)
+
+### Breaking change
+- Upgrade to Angular 9 [ebrehault]
+
+# 1.11.1 (2020-02-25)
+
+### Bug fixes
+- **dropdown-checkbox component**: fix displayed values [mathilde-pellerin]
+- **icon component**: add optional color and padding in icon model [mathilde-pellerin]
+- **icon component**: large size is 30px [mathilde-pellerin]
+- **icon component**: add name support in icon model [mathilde-pellerin]
+- **date-input component**: use help Input from TextFieldCommon [mathilde-pellerin]
+
+# 1.11.0 (2020-02-20)
+
+### Bug fixes
+- **Calendar component**: Updating month page when passed date is not a range [raul-onna]
 
 ### Features
 - New `date-input` component [raul-onna]

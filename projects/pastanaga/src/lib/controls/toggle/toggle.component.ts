@@ -6,7 +6,7 @@ let nextId = 0;
 @Component({
     selector: 'pa-toggle',
     templateUrl: './toggle.component.html',
-    styleUrls: ['../controls.scss', './toggle.component.scss'],
+    styleUrls: ['./toggle.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToggleComponent implements OnInit {
@@ -21,7 +21,7 @@ export class ToggleComponent implements OnInit {
     @Input() noLabel = 'common.no';
     @Output() isSelectedChange: EventEmitter<boolean> = new EventEmitter();
 
-    @ViewChild('text', { static: false }) textElement?: ElementRef;
+    @ViewChild('text') textElement?: ElementRef;
 
     helpId = '';
 
