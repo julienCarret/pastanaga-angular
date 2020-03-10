@@ -1,0 +1,30 @@
+import { ChangeDetectorRef, EventEmitter, OnInit } from '@angular/core';
+import { ControlModel } from '../control.model';
+import { TranslatePipe } from '../../translate/translate.pipe';
+export declare class CheckboxGroupComponent implements OnInit {
+    private translate;
+    private cdr;
+    id?: string;
+    type: 'checkbox' | 'radio';
+    set checkboxes(value: ControlModel[]);
+    set disabled(value: any);
+    set shouldSort(value: any);
+    set selectAllVisible(value: any);
+    set countVisible(value: any);
+    set noSelectAll(value: any);
+    selection: EventEmitter<string[]>;
+    _checkboxes: ControlModel[];
+    _shouldSort: boolean;
+    _selectAllVisible: boolean;
+    _countVisible: boolean;
+    _disabled: boolean;
+    _isAllSelected: boolean;
+    totalCount: number;
+    totalSelected: number;
+    constructor(translate: TranslatePipe, cdr: ChangeDetectorRef);
+    ngOnInit(): void;
+    toggleSelection(value: string): void;
+    toggleSelectAll(): void;
+    private updateSelectionCount;
+    private emitSelectionChanged;
+}

@@ -1,0 +1,46 @@
+import { AfterViewInit, ElementRef, EventEmitter, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Icon } from '../../common/utils';
+import { LabelIcon } from '../control.model';
+export declare class CheckboxComponent implements OnInit, AfterViewInit {
+    private cdr;
+    element: ElementRef;
+    id?: string;
+    type: 'checkbox' | 'radio';
+    help?: string;
+    set icon(value: string | Icon);
+    name?: string;
+    subLabel?: string;
+    labelIcons?: LabelIcon[];
+    set disabled(value: any);
+    set selected(value: any);
+    set indeterminate(value: any);
+    set labelHidden(value: any);
+    set noFocus(value: any);
+    set squareCheck(value: any);
+    selection: EventEmitter<boolean>;
+    selectedChange: EventEmitter<boolean>;
+    textElement?: ElementRef;
+    ellipsisText?: ElementRef;
+    _id: string;
+    _noFocus: boolean;
+    _indeterminate: boolean;
+    _disabled: boolean;
+    _selected: boolean;
+    _squareCheck: boolean;
+    _labelHidden: boolean;
+    _iconName: string;
+    _icon?: Icon;
+    helpId: string;
+    extraStyle: {
+        [key: string]: string;
+    };
+    hasEllipsis: boolean;
+    tooltipText: string;
+    hasExtraWidth: boolean;
+    constructor(cdr: ChangeDetectorRef, element: ElementRef);
+    ngOnInit(): void;
+    ngAfterViewInit(): void;
+    toggleCheckbox(): void;
+    setLabelMaxWidth(extraWidth?: number): void;
+    setEllipsis(): void;
+}

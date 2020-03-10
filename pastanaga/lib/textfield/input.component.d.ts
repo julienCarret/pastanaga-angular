@@ -1,0 +1,35 @@
+import { ElementRef, EventEmitter, NgZone, OnInit, AfterViewChecked, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { FormGroupDirective, NgForm } from '@angular/forms';
+import { Platform } from '@angular/cdk/platform';
+import { AutofillMonitor } from '@angular/cdk/text-field';
+import { TextfieldCommon } from './textfield.common';
+export declare class InputComponent extends TextfieldCommon implements OnInit, AfterViewChecked, OnDestroy {
+    protected _platform: Platform;
+    protected ngZone: NgZone;
+    private _autofillMonitor;
+    _parentForm: NgForm;
+    _parentFormGroup: FormGroupDirective;
+    private cdr;
+    type: string;
+    maxCharacters?: number;
+    get hasFocus(): boolean;
+    set hasFocus(value: boolean);
+    get acceptHtmlTags(): boolean;
+    set acceptHtmlTags(value: boolean);
+    get noAutoComplete(): boolean;
+    set noAutoComplete(value: boolean);
+    errorList: EventEmitter<any>;
+    input?: ElementRef;
+    _hasFocus: boolean;
+    _acceptHtmlTags: boolean;
+    _noAutoComplete: boolean;
+    autofilled: boolean;
+    baseId: string;
+    constructor(_platform: Platform, ngZone: NgZone, _autofillMonitor: AutofillMonitor, _parentForm: NgForm, _parentFormGroup: FormGroupDirective, cdr: ChangeDetectorRef);
+    ngOnInit(): void;
+    ngAfterViewChecked(): void;
+    ngOnDestroy(): void;
+    _validate(value: any): void;
+    writeValue(value: string | number | undefined): void;
+    reset(): void;
+}

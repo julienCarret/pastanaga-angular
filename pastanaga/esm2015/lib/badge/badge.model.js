@@ -1,0 +1,6 @@
+export class BadgeModel {
+    constructor() {
+        this.name = '';
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYmFkZ2UubW9kZWwuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9AZ3VpbGxvdGluYXdlYi9wYXN0YW5hZ2EtYW5ndWxhci8iLCJzb3VyY2VzIjpbImxpYi9iYWRnZS9iYWRnZS5tb2RlbC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxNQUFNLE9BQU8sVUFBVTtJQUF2QjtRQUNJLFNBQUksR0FBRyxFQUFFLENBQUM7SUFJZCxDQUFDO0NBQUEiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgY2xhc3MgQmFkZ2VNb2RlbCB7XG4gICAgbmFtZSA9ICcnO1xuICAgIGljb24/OiBzdHJpbmc7XG4gICAgY29sb3I/OiBzdHJpbmc7XG4gICAgb25DbGljaz86IEZ1bmN0aW9uO1xufVxuIl19

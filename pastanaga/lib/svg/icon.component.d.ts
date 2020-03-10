@@ -1,0 +1,33 @@
+import { ElementRef, Renderer2 } from '@angular/core';
+import { SvgIconRegistryService } from 'angular-svg-icon';
+import { SvgLoader } from './svg-loader';
+import { Icon } from '../common/utils';
+export declare class IconComponent {
+    private element;
+    private renderer;
+    private service;
+    private svgLoader;
+    protected platformId: Object;
+    set icon(value: Icon);
+    set path(value: string);
+    set name(value: string);
+    get hidden(): boolean;
+    set hidden(value: boolean);
+    get small(): boolean;
+    set small(value: boolean);
+    get color(): string;
+    set color(value: string);
+    _border: boolean;
+    _hidden: boolean;
+    _small: boolean;
+    _medium: boolean;
+    _large: boolean;
+    _color: string;
+    _padding: string;
+    iconPath: string;
+    iconBackground: string;
+    constructor(element: ElementRef, renderer: Renderer2, service: SvgIconRegistryService, svgLoader: SvgLoader, platformId: Object);
+    private updateSvg;
+    private setSvg;
+    private getIconPathFromName;
+}
