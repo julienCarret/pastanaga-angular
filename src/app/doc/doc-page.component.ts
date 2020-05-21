@@ -24,7 +24,7 @@ export class DocPageComponent implements AfterContentInit {
     }
 
     private triggerHighlightJs(): void {
-            window.document.dispatchEvent(new Event("DOMContentLoaded", {
+            window.document.dispatchEvent(new Event("HighLightCode", {
                 bubbles: true,
                 cancelable: true
             }));
