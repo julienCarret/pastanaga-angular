@@ -20,5 +20,13 @@ export class DocPageComponent implements AfterContentInit {
         this._hasExamples = !!this.examples && this.examples.nativeElement.children.length > 0;
         this._hasUsage = !!this.usage && this.usage.nativeElement.children.length > 0;
         this._hasCode = !!this.code && this.code.nativeElement.children.length > 0;
+        this.triggerHighlightJs();
+    }
+
+    private triggerHighlightJs(): void {
+            window.document.dispatchEvent(new Event("DOMContentLoaded", {
+                bubbles: true,
+                cancelable: true
+            }));
     }
 }
